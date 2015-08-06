@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Build your own lineup!</title>
+		<link rel="stylesheet" href="css/style.css">
+
+		<script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+	</head>
+
+	<body>
+		<input type="text" id="playerOne" value="Ramsey">
+		<input type="text" id="playerTwo" value="Ozil">
+
+		<div id="drag-1" class="draggable">
+			<p id ="playerOne"> You can drag one element </p>
+		</div>
+		<div id="drag-2" class="draggable">
+			<p id = "playerTwo"> with each pointer </p>
+		</div>
+
+		<script>
+		$( "#playerOne" )
+		  .keyup(function() {
+		    var value = $( this ).val();
+		    $( "#drag-1" ).text( value );
+		  })
+		  .keyup();
+		  
+		$( "#playerTwo" )
+		  .keyup(function() {
+		    var value = $( this ).val();
+		    $( "#drag-2" ).text( value );
+		  })
+		  .keyup();
+		</script>
+
+		<script src="https://cdn.jsdelivr.net/interact.js/1.2.4/interact.min.js"></script>
+		<script src="js/index.js"></script>
+	</body>
+</html>
