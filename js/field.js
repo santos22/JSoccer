@@ -1,13 +1,20 @@
+var rotateThisImage;
+
 function draw() {
 	var canvas = new fabric.Canvas('canvas');
 
 	fabric.Image.fromURL("http://www.clker.com/cliparts/a/v/l/j/s/Q/soccer-field.svg", function(oImg) {
-		// worry about rotation later
+		// rotation of SVG soccer field
 		oImg.set('selectable', false);
-        canvas.add(oImg);
+		canvas.add(oImg);
+		canvas.centerObject(oImg);
+		canvas.renderAll();
+		rotateThisImage = oImg;
+		rotateThisImage.setAngle(90);
+		canvas.renderAll();
 
         var player1 = new fabric.Circle({
-		  radius: 20, fill: 'red', left: 800, top: 200, hasControls: false
+		  radius: 20, fill: 'red', left: 100, top: 300, hasControls: false
 		});
 
 	    var text1 = new fabric.IText('Giroud', { 
@@ -17,7 +24,7 @@ function draw() {
 		});
 
 		var player2 = new fabric.Circle({
-		  radius: 20, fill: 'red', left: 800, top: 500, hasControls: false
+		  radius: 20, fill: 'red', left: 350, top: 300, hasControls: false
 		});
 
 	    var text2 = new fabric.IText('Walcott', { 
@@ -27,7 +34,7 @@ function draw() {
 		});
 
 		var player3 = new fabric.Circle({
-		  radius: 20, fill: 'red', left: 550, top: 200, hasControls: false
+		  radius: 20, fill: 'red', left: 100, top: 500, hasControls: false
 		});
 
 	    var text3 = new fabric.IText('Ozil', { 
@@ -37,7 +44,7 @@ function draw() {
 		});
 
 		var player4 = new fabric.Circle({
-		  radius: 20, fill: 'red', left: 550, top: 500, hasControls: false
+		  radius: 20, fill: 'red', left: 450, top: 500, hasControls: false
 		});
 
 	    var text4 = new fabric.IText('Ramsey', { 
@@ -47,7 +54,7 @@ function draw() {
 		});
 
 		var player5 = new fabric.Circle({
-		  radius: 20, fill: 'red', left: 650, top: 350, hasControls: false
+		  radius: 20, fill: 'red', left: 375, top: 450, hasControls: false
 		});
 
 	    var text5 = new fabric.IText('Cazorla', { 
@@ -57,7 +64,7 @@ function draw() {
 		});
 
 		var player6 = new fabric.Circle({
-		  radius: 20, fill: 'red', left: 450, top: 350, hasControls: false
+		  radius: 20, fill: 'red', left: 300, top: 650, hasControls: false
 		});
 
 	    var text6 = new fabric.IText('Coq', { 
@@ -67,7 +74,7 @@ function draw() {
 		});
 
 		var player7 = new fabric.Circle({
-		  radius: 20, fill: 'red', left: 250, top: 100, hasControls: false
+		  radius: 20, fill: 'red', left: 50, top: 800, hasControls: false
 		});
 
 	    var text7 = new fabric.IText('Nacho', { 
@@ -77,7 +84,7 @@ function draw() {
 		});
 
 		var player8 = new fabric.Circle({
-		  radius: 20, fill: 'red', left: 250, top: 300, hasControls: false
+		  radius: 20, fill: 'red', left: 250, top: 800, hasControls: false
 		});
 
 	    var text8 = new fabric.IText('Kos', { 
@@ -87,23 +94,33 @@ function draw() {
 		});
 
 		var player9 = new fabric.Circle({
-		  radius: 20, fill: 'red', left: 250, top: 400, hasControls: false
+		  radius: 20, fill: 'red', left: 400, top: 800, hasControls: false
 		});
 
-	    var text9 = new fabric.IText('Mertesacker', { 
+	    var text9 = new fabric.IText('Per', { 
 		  fontFamily: 'arial black',
 		  left: player9.left, 
 		  top: player9.top,
 		});
 
 		var player10 = new fabric.Circle({
-		  radius: 20, fill: 'red', left: 250, top: 600, hasControls: false
+		  radius: 20, fill: 'red', left: 500, top: 800, hasControls: false
 		});
 
 	    var text10 = new fabric.IText('Bellerin', { 
 		  fontFamily: 'arial black',
 		  left: player10.left, 
 		  top: player10.top,
+		});
+
+		var player11 = new fabric.Circle({
+		  radius: 20, fill: 'red', left: 325, top: 1000, hasControls: false
+		});
+
+	    var text11 = new fabric.IText('Cech', { 
+		  fontFamily: 'arial black',
+		  left: player11.left, 
+		  top: player11.top,
 		});
 
 		canvas.add(player1);
@@ -135,6 +152,9 @@ function draw() {
 
 		canvas.add(player10);
 		canvas.add(text10);
+
+		canvas.add(player11);
+		canvas.add(text11);
 
     });
 
@@ -169,3 +189,6 @@ document.addEventListener("DOMContentLoaded", function() {
 // export canvas as Image
 // http://stackoverflow.com/questions/20032214/recreate-fabric-js-canvas-and-export-as-an-image
 // http://jsfiddle.net/AbdiasSoftware/7PRNN/
+
+// solved rotation
+// http://jsfiddle.net/PromInc/h9kL5bs0/
