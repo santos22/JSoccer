@@ -1,4 +1,4 @@
-#drag-1, #drag-2 {
+/*#drag-1, #drag-2 {
   width: 25%;
   height: 100%;
   padding: 10%;
@@ -12,9 +12,29 @@
 
   -webkit-transform: translate(0px, 0px);
           transform: translate(0px, 0px);
+
+  to draw circle
+  https://css-tricks.com/examples/ShapesOfCSS/
+}*/
+
+#drag-1, #drag-2 {
+  width: 100px;
+  height: 100px;
+  background: red;
+  -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  text-align: center;
+  border-radius: 50px;
+  margin: auto;
 }
 
 #drag-me::before {
   content: "#" attr(id);
   font-weight: bold;
+}
+
+#canvas-container {
+   width: 720px;
+   height:1150px;
+   margin: auto;
 }
