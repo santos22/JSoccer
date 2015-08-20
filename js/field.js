@@ -17,10 +17,20 @@ function draw() {
 		  radius: 20, fill: 'red', left: 100, top: 300, hasControls: false
 		});
 
+		// use to change fill colors or player
+		//player1.set( { fill: 'blue' } )
+
 	    var text1 = new fabric.IText('Giroud', { 
 		  fontFamily: 'arial black',
-		  left: player1.left, 
-		  top: player1.top,
+		  originX: 'center',
+		  originY: 'center',
+		  hasControls: false
+		});
+
+		text1.animate('left', 100, {
+		  onChange: canvas.renderAll.bind(canvas),
+		  duration: 1000,
+		  easing: fabric.util.ease.easeInCubic
 		});
 
 		var player2 = new fabric.Circle({
@@ -31,6 +41,7 @@ function draw() {
 		  fontFamily: 'arial black',
 		  left: player2.left, 
 		  top: player2.top,
+		  hasControls: false
 		});
 
 		var player3 = new fabric.Circle({
@@ -41,6 +52,7 @@ function draw() {
 		  fontFamily: 'arial black',
 		  left: player3.left, 
 		  top: player3.top,
+		  hasControls: false
 		});
 
 		var player4 = new fabric.Circle({
@@ -51,6 +63,7 @@ function draw() {
 		  fontFamily: 'arial black',
 		  left: player4.left, 
 		  top: player4.top,
+		  hasControls: false
 		});
 
 		var player5 = new fabric.Circle({
@@ -61,6 +74,7 @@ function draw() {
 		  fontFamily: 'arial black',
 		  left: player5.left, 
 		  top: player5.top,
+		  hasControls: false
 		});
 
 		var player6 = new fabric.Circle({
@@ -71,6 +85,7 @@ function draw() {
 		  fontFamily: 'arial black',
 		  left: player6.left, 
 		  top: player6.top,
+		  hasControls: false
 		});
 
 		var player7 = new fabric.Circle({
@@ -81,6 +96,7 @@ function draw() {
 		  fontFamily: 'arial black',
 		  left: player7.left, 
 		  top: player7.top,
+		  hasControls: false
 		});
 
 		var player8 = new fabric.Circle({
@@ -91,6 +107,7 @@ function draw() {
 		  fontFamily: 'arial black',
 		  left: player8.left, 
 		  top: player8.top,
+		  hasControls: false
 		});
 
 		var player9 = new fabric.Circle({
@@ -101,6 +118,7 @@ function draw() {
 		  fontFamily: 'arial black',
 		  left: player9.left, 
 		  top: player9.top,
+		  hasControls: false
 		});
 
 		var player10 = new fabric.Circle({
@@ -111,6 +129,7 @@ function draw() {
 		  fontFamily: 'arial black',
 		  left: player10.left, 
 		  top: player10.top,
+		  hasControls: false
 		});
 
 		var player11 = new fabric.Circle({
@@ -121,6 +140,7 @@ function draw() {
 		  fontFamily: 'arial black',
 		  left: player11.left, 
 		  top: player11.top,
+		  hasControls: false
 		});
 
 		canvas.add(player1);
@@ -158,15 +178,11 @@ function draw() {
 
     });
 
-    //canvas.renderAll();
+    canvas.renderAll();
+    // add option to change team colors; drop down menu?
+    // hopefully add feature to change text
 
 }
-
-function downloadCanvas(link, canvasId, filename) {
-    link.href = document.getElementById(canvasId).toDataURL();
-    link.download = filename;
-}
-
 
 // window.onload = function() {
 //   draw();
@@ -174,8 +190,9 @@ function downloadCanvas(link, canvasId, filename) {
 
 document.addEventListener("DOMContentLoaded", function() {
   draw();
-
 });
+
+
 
 // solved my SVG problem
 // https://github.com/kangax/fabric.js/issues/1626
