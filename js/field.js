@@ -17,9 +17,6 @@ function draw() {
 		  radius: 20, fill: 'red', left: 100, top: 300, hasControls: false
 		});
 
-		// use to change fill colors or player
-		//player1.set( { fill: 'blue' } )
-
 	    var text1 = new fabric.IText('Giroud', { 
 		  fontFamily: 'arial black',
 		  originX: 'center',
@@ -144,44 +141,39 @@ function draw() {
 		});
 
 		canvas.add(player1);
-		canvas.add(text1);
-
 		canvas.add(player2);
-		canvas.add(text2);
-
 		canvas.add(player3);
-		canvas.add(text3);
-
 		canvas.add(player4);
-		canvas.add(text4);
-
 		canvas.add(player5);
-		canvas.add(text5);
-
 		canvas.add(player6);
-		canvas.add(text6);
-
 		canvas.add(player7);
-		canvas.add(text7);
-
 		canvas.add(player8);
-		canvas.add(text8);
-
 		canvas.add(player9);
-		canvas.add(text9);
-
 		canvas.add(player10);
-		canvas.add(text10);
-
 		canvas.add(player11);
+
+		canvas.add(text1);
+		canvas.add(text2);
+		canvas.add(text3);
+		canvas.add(text4);
+		canvas.add(text5);
+		canvas.add(text6);
+		canvas.add(text7);
+		canvas.add(text8);
+		canvas.add(text9);
+		canvas.add(text10);
 		canvas.add(text11);
 
+		// change player colors
+		document.getElementById('change-color').addEventListener('click', function (e) {
+			var color = document.getElementById('color').value;
+
+			for(i = 1; i < 12 ; i++) {
+				canvas.item(i).set( { fill: color } );
+			}
+			canvas.renderAll();
+		});
     });
-
-    canvas.renderAll();
-    // add option to change team colors; drop down menu?
-    // hopefully add feature to change text
-
 }
 
 // window.onload = function() {
@@ -190,22 +182,6 @@ function draw() {
 
 document.addEventListener("DOMContentLoaded", function() {
   draw();
+  //window.location.href=canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
 });
 
-
-
-// solved my SVG problem
-// https://github.com/kangax/fabric.js/issues/1626
-
-// prevent resizing of shapes
-// http://stackoverflow.com/questions/14842877/make-fabric-js-object-draggable-but-not-selectable
-
-// possible edit group text
-// http://stackoverflow.com/questions/24449481/fabric-js-grouped-itext-not-editable
-
-// export canvas as Image
-// http://stackoverflow.com/questions/20032214/recreate-fabric-js-canvas-and-export-as-an-image
-// http://jsfiddle.net/AbdiasSoftware/7PRNN/
-
-// solved rotation
-// http://jsfiddle.net/PromInc/h9kL5bs0/
