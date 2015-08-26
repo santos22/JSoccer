@@ -208,6 +208,27 @@ function draw() {
 			
 			canvas.renderAll();
 		});
+
+		canvas.on('mouse:over', function(e) {
+			e.target.setFill('orange');
+			canvas.renderAll();
+		});
+
+		canvas.on('mouse:out', function(e) {
+			var prevColor = document.getElementById('color').value;
+			
+			if(e.target.type === 'circle')
+			{
+				e.target.setFill(prevColor);
+				canvas.renderAll();
+			}
+			else if(e.target.type === 'i-text')
+			{
+				e.target.setFill('black');
+				canvas.renderAll();
+			}
+		});
+
     });
 }
 
