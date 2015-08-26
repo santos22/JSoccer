@@ -12,7 +12,7 @@
 		<script src="js/field.js"></script>
 		<script src="js/index.js"></script>
 
-		<div id = "button-container">
+		<div class = "center-button">
 			<button id='add-player'>Add player</button>
 			<button id='remove-object'>Remove player</button>
 			<button id='tactics'>Draw tactics mode</button>
@@ -20,7 +20,7 @@
 			<button id='change-color'>Change Player Colors</button>
 		</div>
 
-		<div style="display: inline-block; width: 140px">
+		<div class ="center-button">
 			<select id="color">
 				<option>red</option>
 			    <option>blue</option>
@@ -37,11 +37,13 @@
 	</head>
 
 	<body style="background-color: lightgrey">
-		<p>Hold down SHIFT to select player and corresponding name to move together.</p>
+		<div class ="center-text">
+			<p>Hold down SHIFT to select player and corresponding name to move together.</p>
+		</div>
 		<div id="canvas-container">
 			<canvas id="canvas" width="720" height="1150"></canvas>
 		</div>
 		
-		<a id="download" href="">Download as image</a>
+		<!-- <a id="download" href="">Download as image</a> -->
 	</body>
 </html>
