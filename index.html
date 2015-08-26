@@ -12,7 +12,13 @@
 		<script src="js/field.js"></script>
 		<script src="js/index.js"></script>
 
-		<button id='change-color'>Change Player Colors</button>
+		<div id = "button-container">
+			<button id='add-player'>Add player</button>
+			<button id='remove-object'>Remove player</button>
+			<button id='tactics'>Draw tactics mode</button>
+			<button id='select'>Move players mode</button>
+			<button id='change-color'>Change Player Colors</button>
+		</div>
 
 		<div style="display: inline-block; width: 140px">
 			<select id="color">
@@ -30,27 +36,12 @@
 
 	</head>
 
-	<body>
+	<body style="background-color: lightgrey">
+		<p>Hold down SHIFT to select player and corresponding name to move together.</p>
 		<div id="canvas-container">
-			<canvas id="canvas" width="720" height="1150" style="border:10px solid #000000;"></canvas>
+			<canvas id="canvas" width="720" height="1150"></canvas>
 		</div>
 		
 		<a id="download" href="">Download as image</a>
-		
-
-<!-- 		<input type="text" id="playerOne" value="Cech">
-		<input type="text" id="playerTwo" value="Bellerin">
-		<input type="text" id="playerThree" value="Kos">
-		<input type="text" id="playerFour" value="Mertesacker">
-		<input type="text" id="playerFive" value="Nacho">
-		<input type="text" id="playerSix" value="Coq">
-		<input type="text" id="playerSeven" value="Ramsey">
-		<input type="text" id="playerEight" value="Ozil">
-		<input type="text" id="playerNine" value="Cazorla">
-		<input type="text" id="playerTen" value="Sanchez">
-		<input type="text" id="playerEleven" value="Giroud"> -->
-<!-- 
-		<div id="drag-1" class="draggable"></div>
-		<div id="drag-2" class="draggable"></div> -->
 	</body>
 </html>

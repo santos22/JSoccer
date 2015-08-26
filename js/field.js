@@ -3,14 +3,19 @@ var rotateThisImage;
 function draw() {
 	var canvas = new fabric.Canvas('canvas');
 
-	fabric.Image.fromURL("http://www.clker.com/cliparts/a/v/l/j/s/Q/soccer-field.svg", function(oImg) {
+	var test = fabric.Image.fromURL("http://www.clker.com/cliparts/a/v/l/j/s/Q/soccer-field.svg", function(oImg) {
 		// rotation of SVG soccer field
 		oImg.set('selectable', false);
+		//oImg.lockMovementX = true;
+		//oImg.lockMovementY = true;
+
 		canvas.add(oImg);
 		canvas.centerObject(oImg);
 		canvas.renderAll();
 		rotateThisImage = oImg;
 		rotateThisImage.setAngle(90);
+
+
 		canvas.renderAll();
 
         var player1 = new fabric.Circle({
@@ -19,16 +24,16 @@ function draw() {
 
 	    var text1 = new fabric.IText('Giroud', { 
 		  fontFamily: 'arial black',
-		  originX: 'center',
-		  originY: 'center',
+		  left: player1.left, 
+		  top: player1.top,
 		  hasControls: false
 		});
 
-		text1.animate('left', 100, {
-		  onChange: canvas.renderAll.bind(canvas),
-		  duration: 1000,
-		  easing: fabric.util.ease.easeInCubic
-		});
+		// text1.animate('left', 100, {
+		//   onChange: canvas.renderAll.bind(canvas),
+		//   duration: 1000,
+		//   easing: fabric.util.ease.easeInCubic
+		// });
 
 		var player2 = new fabric.Circle({
 		  radius: 20, fill: 'red', left: 350, top: 300, hasControls: false
@@ -140,37 +145,67 @@ function draw() {
 		  hasControls: false
 		});
 
-		canvas.add(player1);
-		canvas.add(player2);
-		canvas.add(player3);
-		canvas.add(player4);
-		canvas.add(player5);
-		canvas.add(player6);
-		canvas.add(player7);
-		canvas.add(player8);
-		canvas.add(player9);
-		canvas.add(player10);
-		canvas.add(player11);
-
-		canvas.add(text1);
-		canvas.add(text2);
-		canvas.add(text3);
-		canvas.add(text4);
-		canvas.add(text5);
-		canvas.add(text6);
-		canvas.add(text7);
-		canvas.add(text8);
-		canvas.add(text9);
-		canvas.add(text10);
-		canvas.add(text11);
+		canvas.add(player1, player2, player3, player4, player5, player6, player7, player8, player9, player10, player11);
+		canvas.add(text1, text2, text3, text4, text5, text6, text7, text8, text9, text10, text11);
 
 		// change player colors
 		document.getElementById('change-color').addEventListener('click', function (e) {
 			var color = document.getElementById('color').value;
 
-			for(i = 1; i < 12 ; i++) {
-				canvas.item(i).set( { fill: color } );
+			for(i = 1; i < canvas.getObjects().length ; i++) {
+				if(canvas.item(i).type === 'circle')
+				{
+					canvas.item(i).set( { fill: color } );
+				}
 			}
+			canvas.renderAll();
+		});
+
+		// add player onto canvas
+		document.getElementById('add-player').addEventListener('click', function (e) {
+			var color = document.getElementById('color').value;
+
+			var newPlayer = new fabric.Circle({
+			  radius: 20, fill: color, left: 400, top: 650, hasControls: false
+			});
+
+		    var newName = new fabric.IText('New Player', { 
+			  fontFamily: 'arial black',
+			  left: newPlayer.left, 
+			  top: newPlayer.top,
+			  hasControls: false
+			});
+
+			canvas.add(newPlayer, newName);
+			canvas.renderAll();
+		});
+
+		// delete player from canvas
+		document.getElementById('remove-object').addEventListener('click', function (e) {
+			if(canvas.getActiveObject().type === 'circle' || canvas.getActiveObject().type === 'i-text')
+			{
+				canvas.remove(canvas.getActiveObject());
+			}
+			// if(canvas.getActiveGroup().type === 'group' && canvas.getActiveGroup().type != null)
+			// {
+			// 	canvas.remove(canvas.getActiveGroup());
+			// }
+
+			canvas.renderAll();
+		});
+
+		// draw tactics/instructions on screen
+		document.getElementById('tactics').addEventListener('click', function (e) {
+			canvas.isDrawingMode = true;
+			// type of object drawn is 'path'
+			
+			canvas.renderAll();
+		});
+
+		// move players on screen again
+		document.getElementById('select').addEventListener('click', function (e) {
+			canvas.isDrawingMode = false;
+			
 			canvas.renderAll();
 		});
     });
@@ -185,3 +220,27 @@ document.addEventListener("DOMContentLoaded", function() {
   //window.location.href=canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
 });
 
+// var backgroundColor = $('background-color');
+
+// backgroundColor.onchange = function() {         
+//             canvas.getActiveObject().set("blue", this.value);
+//             canvas.renderAll();
+//         };
+
+// function isCanvasBlank(canvas) {
+//     var blank = document.createElement('canvas');
+//     blank.width = canvas.width;
+//     blank.height = canvas.width;
+
+//     return canvas.toDataURL() == blank.toDataURL();
+// }
+
+// document.getElementById('save').addEventListener('click',function(){
+// 	var blank = isCanvasBlank(document.getElementById('canvas'));
+    
+//     if(blank) {
+//         alert('blank!');   
+//     }
+//     else
+//     	alert('NOT');
+// });
